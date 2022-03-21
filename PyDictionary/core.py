@@ -1,5 +1,5 @@
 from __future__ import print_function
-import sys, re, goslate
+import sys, re
 try:
     from .utils import _get_soup_object
 except:
@@ -34,13 +34,15 @@ class PyDictionary(object):
         antonyms = dict(zip(self.args,self.getAntonyms(False)))
         for word in antonyms:
             print(word+':')
-            print(', '.join(antonyms[word]))
+            if antonyms[word] is not None:
+                print(', '.join(antonyms[word]))
 
     def printSynonyms(self):
         synonyms = dict(zip(self.args,self.getSynonyms(False)))
         for word in synonyms:
             print(word+':')
-            print(', '.join(synonyms[word]))
+            if synonyms[word] is not None:
+                print(', '.join(synonyms[word]))
 
     def getMeanings(self):
         out = {}
@@ -52,15 +54,7 @@ class PyDictionary(object):
         return [self.translate(term, language) for term in self.args]
 
     def translate(self, term, language):
-        if len(term.split()) > 1:
-            print("Error: A Term must be only a single word")
-        else:
-            try:
-                gs = goslate.Goslate()
-                word = gs.translate(term, language)
-                return word
-            except:
-                print("Invalid Word")
+        print("Error: Unsupported Functionality Currently")
 
     def getSynonyms(self, formatted=True):
         return [self.synonym(term, formatted) for term in self.args]

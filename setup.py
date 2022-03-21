@@ -20,7 +20,6 @@ setuptools.setup(
     install_requires=[
         'bs4',
         'click',
-        'goslate',
         'requests'
     ]
 )

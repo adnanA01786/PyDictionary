@@ -7,7 +7,9 @@
 
 PyDictionary is a Dictionary Module for Python 2/3 to get meanings, translations, synonyms and Antonyms of words. It uses WordNet for getting meanings, Google for translations, and synonym.com for getting synonyms and antonyms. 
 
-This module uses Python Requests, BeautifulSoup4 and goslate as dependencies
+This module uses Python Requests, BeautifulSoup4 and goslate(removed) as dependencies
+
+This fork is intended to make the library useable once more and introduce some of the now depreciated functionality.
 
 ### Installation
 

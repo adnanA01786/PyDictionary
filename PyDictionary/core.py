@@ -78,8 +78,8 @@ class PyDictionary(object):
         else:
             try:
                 data = _get_soup_object("https://www.synonym.com/synonyms/{0}".format(term))
-                section = data.find('div', {'class': 'type-synonym'})
-                spans = section.findAll('a')
+                section = data.find('div', {'data-section': 'synonyms'})
+                spans = section.findAll('li')
                 synonyms = [span.text.strip() for span in spans]
                 if formatted:
                     return {term: synonyms}
@@ -95,8 +95,8 @@ class PyDictionary(object):
         else:
             try:
                 data = _get_soup_object("https://www.synonym.com/synonyms/{0}".format(term))
-                section = data.find('div', {'class': 'type-antonym'})
-                spans = section.findAll('a')
+                section = data.find('div', {'data-section': 'antonyms'})
+                spans = section.findAll('li')
                 antonyms = [span.text.strip() for span in spans]
                 if formatted:
                     return {term: antonyms}
@@ -133,5 +133,7 @@ class PyDictionary(object):
 
 if __name__ == '__main__':
     d = PyDictionary('honest','happy')
+    d.printMeanings()
     d.printSynonyms()
+    d.printAntonyms()
 
